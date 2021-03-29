@@ -6,7 +6,7 @@ public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
 	public AgendaContactos() {
-		System.out.println("Test");
+		
 	}
 
 	public void añadirContacto() {
@@ -14,8 +14,7 @@ public class AgendaContactos {
 	}
 
 	public void contactosEnLetra() {
-		System.out.println("Test Naiara");
-		System.out.println("Test 2");
+		
 	}
 
 	public void totalContactos() {
