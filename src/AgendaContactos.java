@@ -6,7 +6,7 @@ public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
 	public AgendaContactos() {
-
+		System.out.println("Test");
 	}
 
 	public void añadirContacto() {
