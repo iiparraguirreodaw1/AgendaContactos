@@ -14,7 +14,7 @@ public class AgendaContactos {
 	}
 
 	public void contactosEnLetra() {
-
+		System.out.println("Test Naiara");
 	}
 
 	public void totalContactos() {
