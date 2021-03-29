@@ -7,15 +7,15 @@ public class AgendaContactos {
 
 	
 	public AgendaContactos() {
-		System.out.println("Testtt");
+		
 	}
 
 	public void añadirContacto() {
-		/* Prueba */
+		
 	}
 
 	public void contactosEnLetra() {
-		System.out.println("Otra prueba");
+		
 	}
 
 	public void totalContactos() {
