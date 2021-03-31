@@ -1,4 +1,4 @@
-public class Contacto {
+public abstract class Contacto implements Comparable<Contacto> {
 	private String nombre;
 	private String apellidos;
 	private String telefono;
@@ -43,6 +43,10 @@ public class Contacto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public char getPrimeraLetra() {
+		return nombre.charAt(0);
+	}
 
 	@Override
 	public int hashCode() {
@@ -50,4 +54,31 @@ public class Contacto {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Contacto) {
+			Contacto c = (Contacto) obj;
+			if(this.nombre.equals(c.getNombre()) && this.apellidos.equals(c.getApellidos()) && this.email.equals(c.getEmail())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public int compareTo(Contacto o) {
+		if(this.apellidos.equals(o.getApellidos())) {
+			return this.nombre.compareTo(o.getNombre());
+		}else {
+			return this.apellidos.compareTo(o.getApellidos());
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return  this.apellidos + ", " + this.nombre + " (" + this.getClass().getSimpleName() + ") " + 
+				"\n" + "Tfno: " + this.telefono + " | " + "email: " + this.email + "\n";
+	}
+	
+	public abstract String firma();
 }
