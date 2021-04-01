@@ -29,8 +29,12 @@ public class AgendaContactos {
 		
 	}
 
-	public void totalContactos() {
-
+	public int totalContactos() {
+		int contador = 0;
+		for (Set<Contacto> lista : agenda.values()) {
+			contador += lista.size();
+		}
+		return contador;
 	}
 
 	public List<Contacto> buscarContactos(String texto) {
@@ -88,7 +92,7 @@ public class AgendaContactos {
 		ag.añadirContacto(new Personal("Berta", "Bndia solano", "621123345",
 				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
 		
-		ag.añadirContacto(new Personal("Amaia", "Romero Sein", "642222343",
+		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343",
 				"aromerosein@gmail.com", "08/03/2012",
 				Relacion.PAREJA));
 		
