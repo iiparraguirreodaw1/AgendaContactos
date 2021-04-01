@@ -50,7 +50,7 @@ public class Personal extends Contacto {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Fecha cumpleaños: " + getFecha();
+		return super.toString() + "Fecha cumpleaños: " + getFecha() + "\n";
 	}
 
 }
