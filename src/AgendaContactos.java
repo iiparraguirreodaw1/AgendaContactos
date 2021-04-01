@@ -24,8 +24,8 @@ public class AgendaContactos {
 		}
 	}
 
-	public void contactosEnLetra() {
-		
+	public Set contactosEnLetra(char letra) {
+		return agenda.get(letra);
 	}
 
 	public int totalContactos() {
@@ -59,7 +59,7 @@ public class AgendaContactos {
 	}
 
 	public void personalesPorRelacion() {
-
+		
 	}
 
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
@@ -91,7 +91,6 @@ public class AgendaContactos {
 				"aromerosein@gmail.com", "08/03/2012",
 				Relacion.PAREJA));
 
-		
 	}
 	
 
