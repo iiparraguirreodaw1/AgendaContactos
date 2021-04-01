@@ -32,8 +32,12 @@ public class Personal extends Contacto {
 		return false;
 	}
 
-	public String getFecha() {
+	public String getFechaFormateada() {
 		return this.fecha.format(formateador);
+	}
+	
+	public LocalDate getFecha() {
+		return this.fecha;
 	}
 
 	public Relacion getRel() {
@@ -50,7 +54,7 @@ public class Personal extends Contacto {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Fecha cumpleaños: " + getFecha() + "\n";
+		return super.toString() + "Fecha cumpleaños: " + getFechaFormateada() + "\n";
 	}
 
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +14,7 @@ public class AgendaContactos {
 		agenda = new TreeMap<>();
 		Collections.sort(null);
 	}
-	
+
 	public void añadirContacto(Contacto c) {
 		char letra = c.getApellidos().charAt(0);
 		if (agenda.containsKey(letra)) {
@@ -68,18 +69,18 @@ public class AgendaContactos {
 
 	public List<Personal> felicitar() {
 		List<Personal> devuelve = new ArrayList<>();
-		
-		for(Set<Contacto> contacto : agenda.values()) {
-			for(Contacto c : contacto) {
-				if(c instanceof Personal) {
+
+		for (Set<Contacto> contacto : agenda.values()) {
+			for (Contacto c : contacto) {
+				if (c instanceof Personal) {
 					Personal p = (Personal) c;
-					if(p.esCumpleaños()) {
+					if (p.esCumpleaños()) {
 						devuelve.add(p);
 					}
 				}
 			}
 		}
-		
+
 		return devuelve;
 	}
 
@@ -88,11 +89,11 @@ public class AgendaContactos {
 		contactos = new TreeMap<>();
 		for (Set<Contacto> lista : agenda.values()) {
 			for (Contacto temp : lista) {
-				if(temp instanceof Personal) {
+				if (temp instanceof Personal) {
 					String nombreapell = temp.getApellidos() + "  " + temp.getNombre();
-					if(contactos.containsKey(((Personal) temp).getRel())) {
+					if (contactos.containsKey(((Personal) temp).getRel())) {
 						contactos.get(((Personal) temp).getRel()).add(nombreapell);
-					}else {
+					} else {
 						List<String> temp1 = new ArrayList<>();
 						temp1.add(nombreapell);
 						contactos.put(((Personal) temp).getRel(), temp1);
@@ -104,7 +105,20 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
-		return null;
+		List<Personal> devuelve = personalesEnLetra(letra);
+		Collections.sort(devuelve, new Comparator<Personal>() {
+
+			@Override
+			public int compare(Personal o1, Personal o2) {
+				if (o1.getFecha().isBefore(o2.getFecha())) {
+					return -1;
+				}
+
+				return 1;
+			}
+
+		});
+		return devuelve;
 	}
 
 	@Override
