@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Personal extends Contacto {
 
 	private LocalDate fecha;
-	DateTimeFormatter formateador;
+	private DateTimeFormatter formateador;
 	private Relacion rel;
 	private final String FIRMA = "Un abrazo!!";
 
