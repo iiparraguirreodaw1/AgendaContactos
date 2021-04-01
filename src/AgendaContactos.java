@@ -8,7 +8,6 @@ import java.util.TreeSet;
 public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
-	
 	public AgendaContactos() {
 		agenda = new TreeMap<>();
 	}
@@ -24,8 +23,8 @@ public class AgendaContactos {
 		}
 	}
 
-	public void contactosEnLetra() {
-		
+	public Set<Contacto> contactosEnLetra(char letra) {
+		return agenda.get(letra);
 	}
 
 	public int totalContactos() {
@@ -49,23 +48,63 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesEnLetra(char letra) {
+		List<Personal> devuelve = new ArrayList<>();
 
-		return null;
+		for (Contacto contacto : agenda.get(letra)) {
+			if (contacto instanceof Personal) {
+				Personal p = (Personal) contacto;
+				devuelve.add(p);
+			}
+
+		}
+		if (!devuelve.isEmpty()) {
+			return devuelve;
+		} else {
+			return null;
+		}
 	}
 
 	public List<Personal> felicitar() {
-
-		return null;
+		List<Personal> devuelve = new ArrayList<>();
+		
+		for(Set<Contacto> contacto : agenda.values()) {
+			for(Contacto c : contacto) {
+				if(c instanceof Personal) {
+					Personal p = (Personal) c;
+					if(p.esCumpleaños()) {
+						devuelve.add(p);
+					}
+				}
+			}
+		}
+		
+		return devuelve;
 	}
 
-	public void personalesPorRelacion() {
-
+	public Map<Relacion, List<String>> personalesPorRelacion() {
+		Map<Relacion, List<String>> contactos;
+		contactos = new TreeMap<>();
+		for (Set<Contacto> lista : agenda.values()) {
+			for (Contacto temp : lista) {
+				if(temp instanceof Personal) {
+					String nombreapell = temp.getApellidos() + "  " + temp.getNombre();
+					if(contactos.containsKey(((Personal) temp).getRel())) {
+						contactos.get(((Personal) temp).getRel()).add(nombreapell);
+					}else {
+						List<String> temp1 = new ArrayList<>();
+						temp1.add(nombreapell);
+						contactos.put(((Personal) temp).getRel(), temp1);
+					}
+				}
+			}
+		}
+		return contactos;
 	}
 
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
 		return null;
 	}
-	
+
 	@Override
 	public String toString() {
 		String output = "";
@@ -78,21 +117,41 @@ public class AgendaContactos {
 		}
 		return output;
 	}
-	
+
 	public static void main(String[] args) {
 		AgendaContactos ag = new AgendaContactos();
+		
 		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", 
 				         "ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS));
 		
 		ag.añadirContacto(new Personal("Berta", "Bndia solano", "621123345",
 				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
 		
+		ag.añadirContacto(new Personal("Elena", "Bndia solano", "621133345",
+				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
+		
 		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343",
 				"aromerosein@gmail.com", "08/03/2012",
 				Relacion.PAREJA));
-
 		
+		ag.añadirContacto(new Personal("Amaia", "Ramero Sain", "642222343",
+				"aromerosein@gmail.com", "08/03/2012",
+				Relacion.PAREJA));
+		
+		ag.añadirContacto(new Personal("Juki", "Ramero Sain", "642222343",
+				"aromerosein@gmail.com", "08/03/2012",
+				Relacion.PADRE));
+		
+		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", "ebuenogan@gmail.com", "17/03/2000",
+				Relacion.AMIGOS));
+
+		ag.añadirContacto(
+				new Personal("Berta", "Bndia solano", "621123345", "bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
+
+		System.out.println(ag.personalesPorRelacion());
+		
+		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343", "aromerosein@gmail.com", "08/03/2012",
+				Relacion.PAREJA));
 	}
-	
 
 }
