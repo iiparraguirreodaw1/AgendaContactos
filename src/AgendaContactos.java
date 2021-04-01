@@ -8,7 +8,6 @@ import java.util.TreeSet;
 public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
-	
 	public AgendaContactos() {
 		agenda = new TreeMap<>();
 	}
@@ -25,7 +24,7 @@ public class AgendaContactos {
 	}
 
 	public void contactosEnLetra() {
-		
+
 	}
 
 	public int totalContactos() {
@@ -50,23 +49,36 @@ public class AgendaContactos {
 
 	public List<Personal> personalesEnLetra(char letra) {
 		List<Personal> devuelve = new ArrayList<>();
+
+		for (Contacto contacto : agenda.get(letra)) {
+			if (contacto instanceof Personal) {
+				Personal p = (Personal) contacto;
+				devuelve.add(p);
+			}
+
+		}
+		if (!devuelve.isEmpty()) {
+			return devuelve;
+		} else {
+			return null;
+		}
+	}
+
+	public List<Personal> felicitar() {
+		List<Personal> devuelve = new ArrayList<>();
 		
 		for(Set<Contacto> contacto : agenda.values()) {
-			for(Contacto temp : contacto) {
-				if(temp instanceof Personal) {
-					Contacto c = null;
+			for(Contacto c : contacto) {
+				if(c instanceof Personal) {
 					Personal p = (Personal) c;
-					devuelve.add(p);
+					if(p.esCumpleaños()) {
+						devuelve.add(p);
+					}
 				}
 			}
 		}
 		
 		return devuelve;
-	}
-
-	public List<Personal> felicitar() {
-		
-		return null;
 	}
 
 	public void personalesPorRelacion() {
@@ -76,7 +88,7 @@ public class AgendaContactos {
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
 		return null;
 	}
-	
+
 	@Override
 	public String toString() {
 		String output = "";
@@ -89,21 +101,17 @@ public class AgendaContactos {
 		}
 		return output;
 	}
-	
+
 	public static void main(String[] args) {
 		AgendaContactos ag = new AgendaContactos();
-		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", 
-				         "ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS));
-		
-		ag.añadirContacto(new Personal("Berta", "Bndia solano", "621123345",
-				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
-		
-		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343",
-				"aromerosein@gmail.com", "08/03/2012",
-				Relacion.PAREJA));
+		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", "ebuenogan@gmail.com", "17/03/2000",
+				Relacion.AMIGOS));
 
-		
+		ag.añadirContacto(
+				new Personal("Berta", "Bndia solano", "621123345", "bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
+
+		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343", "aromerosein@gmail.com", "08/03/2012",
+				Relacion.PAREJA));
 	}
-	
 
 }
