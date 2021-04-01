@@ -22,6 +22,12 @@ public class Profesional extends Contacto {
 		return output;
 	}
 	
+	/**
+	 * Devuelve un saludo aleatorio de entre los siguientes:<br>
+	 * Atentamente, Saludos, Saludos cordiales, Mis Mejores Deseos
+	 * 
+	 * @return - Un saludo aleatorio
+	 */
 	@Override
 	public String firma() {
 		return SALUDOS[rnd.nextInt(SALUDOS.length)];
@@ -35,4 +41,6 @@ public class Profesional extends Contacto {
 	public String toString() {
 		return super.toString() + "Empresa: " + nombreEmpresa + "\n";
 	}
+	
+	
 }
