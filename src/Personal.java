@@ -1,15 +1,27 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 public class Personal extends Contacto{
 
 	private String fechaParseado = "";
-	LocalDate date;
-	Relacion rel;
+	private String patron = "yyyy MM dd";
+	private DateTimeFormatter form;
+	private LocalDate date;
+	private Relacion rel;
 	private final String FIRMA = "Un abrazo!!";
+	
+	
 	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
-		this.fechaParseado = fecha;
-		date  = LocalDate.parse(fechaParseado);
+		this.fechaParseado = fecha.replaceAll("/", "-");
+		// fecha año primero, luego mes, luego dia
+		form = DateTimeFormatter.ofPattern(patron);
+		date = LocalDate.parse(fechaParseado, form);
 		 rel = relacion;
+	}
+	
+	@Override
+	public String firma() {	
+		return this.FIRMA;
 	}
 	
 	public boolean esCumpleaños() {
@@ -52,9 +64,14 @@ public class Personal extends Contacto{
 
 	@Override
 	public String toString() {
-		return "Personal [fechaParseado=" + fechaParseado + ", date=" + date + ", rel=" + rel + ", FIRMA=" + FIRMA
-				+ "]";
+		return super.toString() + "Fecha nacimiento: " + date.getDayOfMonth() + " " + date.getMonth().name().substring(0, 4) + " " + date.getYear();
 	}
 	
+	public static void main(String[] args) {
+		Personal p = new Personal("Elena", "Bueno Ganuza", "6786547699",
+						"ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS);
+		System.out.println(p.toString());
+	}
+
 	
 }
