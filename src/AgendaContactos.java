@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -37,7 +36,7 @@ public class AgendaContactos {
 		List<Contacto> temp = new ArrayList<>();
 		for (Set<Contacto> lista : agenda.values()) {
 			for (Contacto contacto : lista) {
-				if ((contacto.getNombre() + " " + contacto.getApellidos()).contains(texto)) {
+				if ((contacto.getNombre() + " " + contacto.getApellidos()).contains(texto.toUpperCase())) {
 					temp.add(contacto);
 				}
 			}
@@ -66,23 +65,19 @@ public class AgendaContactos {
 	@Override
 	public String toString() {
 		String output = "";
-		
-		
-		for (Set<Contacto> lista : agenda.values()) {
-			String bloque = "";
-			for (Contacto contacto : lista) {
+		for (char letra : agenda.keySet()) {
+			String bloque = letra + " (" + agenda.get(letra).size() + " contactos) \n---------------\n";
+			for (Contacto contacto : agenda.get(letra)) {
 				bloque += contacto + "\n";
 			}
-			output += bloque + "\n";
+			output += bloque;
 		}
-		
-		
 		return output;
 	}
 	
 	public static void main(String[] args) {
 		AgendaContactos ag = new AgendaContactos();
-		ag.añadirContacto(new Personal("Elena", "Bueno Ganuza", "6786547699", 
+		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", 
 				         "ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS));
 		
 		ag.añadirContacto(new Personal("Berta", "Bndia solano", "621123345",
@@ -91,8 +86,7 @@ public class AgendaContactos {
 		ag.añadirContacto(new Personal("Amaia", "Romero Sein", "642222343",
 				"aromerosein@gmail.com", "08/03/2012",
 				Relacion.PAREJA));
-		
-		System.out.println(ag.toString());
+
 		
 	}
 	
