@@ -22,6 +22,7 @@ public class Profesional extends Contacto {
 		return output;
 	}
 	
+	@Override
 	public String firma() {
 		return SALUDOS[rnd.nextInt(SALUDOS.length)];
 	}
@@ -32,6 +33,6 @@ public class Profesional extends Contacto {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Empresa: " + nombreEmpresa;
+		return super.toString() + "Empresa: " + nombreEmpresa + "\n";
 	}
 }
