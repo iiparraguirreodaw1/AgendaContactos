@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +11,7 @@ public class AgendaContactos {
 
 	public AgendaContactos() {
 		agenda = new TreeMap<>();
+		Collections.sort(null);
 	}
 	
 	public void añadirContacto(Contacto c) {
@@ -117,41 +119,4 @@ public class AgendaContactos {
 		}
 		return output;
 	}
-
-	public static void main(String[] args) {
-		AgendaContactos ag = new AgendaContactos();
-		
-		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", 
-				         "ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS));
-		
-		ag.añadirContacto(new Personal("Berta", "Bndia solano", "621123345",
-				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
-		
-		ag.añadirContacto(new Personal("Elena", "Bndia solano", "621133345",
-				"bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
-		
-		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343",
-				"aromerosein@gmail.com", "08/03/2012",
-				Relacion.PAREJA));
-		
-		ag.añadirContacto(new Personal("Amaia", "Ramero Sain", "642222343",
-				"aromerosein@gmail.com", "08/03/2012",
-				Relacion.PAREJA));
-		
-		ag.añadirContacto(new Personal("Juki", "Ramero Sain", "642222343",
-				"aromerosein@gmail.com", "08/03/2012",
-				Relacion.PADRE));
-		
-		ag.añadirContacto(new Personal("Elena", "Buenol Ganuza", "6786547699", "ebuenogan@gmail.com", "17/03/2000",
-				Relacion.AMIGOS));
-
-		ag.añadirContacto(
-				new Personal("Berta", "Bndia solano", "621123345", "bandiasol@gmail.com", "12/12/1999", Relacion.HIJA));
-
-		System.out.println(ag.personalesPorRelacion());
-		
-		ag.añadirContacto(new Personal("Amaia", "Romero Sain", "642222343", "aromerosein@gmail.com", "08/03/2012",
-				Relacion.PAREJA));
-	}
-
 }
