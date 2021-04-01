@@ -1,21 +1,19 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 public class Personal extends Contacto{
 
-	private String fechaParseado = "";
-	private String patron = "yyyy MM dd";
-	private DateTimeFormatter form;
-	private LocalDate date;
+	private LocalDate fecha;
+	DateTimeFormatter formateador;
 	private Relacion rel;
 	private final String FIRMA = "Un abrazo!!";
 	
 	
 	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
-		this.fechaParseado = fecha.replaceAll("/", "-");
-		// fecha año primero, luego mes, luego dia
-		form = DateTimeFormatter.ofPattern(patron);
-		date = LocalDate.parse(fechaParseado, form);
+		String[] split = fecha.split("/");
+        this.fecha = LocalDate.of(Integer.parseInt(split[2]), Integer.parseInt(split[1]), Integer.parseInt(split[0]));       
+        formateador = DateTimeFormatter.ofPattern("dd MMM yyyy", new Locale("es", "ES"));
 		 rel = relacion;
 	}
 	
@@ -26,28 +24,16 @@ public class Personal extends Contacto{
 	
 	public boolean esCumpleaños() {
 		LocalDate ahora = LocalDate.now();
-		if(ahora.getDayOfMonth() == date.getDayOfMonth()) {
-			if(ahora.getMonth().equals(date.getMonth())) {
+		if(ahora.getDayOfMonth() == this.fecha.getDayOfMonth()) {
+			if(ahora.getMonth().equals(this.fecha.getMonth())) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public String getFechaParseado() {
-		return fechaParseado;
-	}
-
-	public void setFechaParseado(String fechaParseado) {
-		this.fechaParseado = fechaParseado;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
+	public String getFecha() {
+		return this.fecha.format(formateador);
 	}
 
 	public Relacion getRel() {
@@ -64,14 +50,7 @@ public class Personal extends Contacto{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Fecha nacimiento: " + date.getDayOfMonth() + " " + date.getMonth().name().substring(0, 4) + " " + date.getYear();
+		return super.toString() +  "Fecha cumpleaños: " + getFecha();
 	}
-	
-	public static void main(String[] args) {
-		Personal p = new Personal("Elena", "Bueno Ganuza", "6786547699",
-						"ebuenogan@gmail.com", "17/03/2000", Relacion.AMIGOS);
-		System.out.println(p.toString());
-	}
-
 	
 }
