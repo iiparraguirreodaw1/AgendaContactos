@@ -46,12 +46,23 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesEnLetra(char letra) {
-
-		return null;
+		List<Personal> devuelve = new ArrayList<>();
+		
+		for(Set<Contacto> contacto : agenda.values()) {
+			for(Contacto temp : contacto) {
+				if(temp instanceof Personal) {
+					Contacto c = null;
+					Personal p = (Personal) c;
+					devuelve.add(p);
+				}
+			}
+		}
+		
+		return devuelve;
 	}
 
 	public List<Personal> felicitar() {
-
+		
 		return null;
 	}
 
