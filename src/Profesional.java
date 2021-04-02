@@ -1,5 +1,18 @@
 import java.util.Random;
 
+/**
+ * Esta clase modela un contacto profesional con todos los atributos heredados de la clase Contacto.<br>
+ * Un contacto profesional, te permite guardar además de nombre, apellidos, telefono y contacto,<br>
+ * un el nombre de la empresa y contiene cuatro saludos
+ * que serán escogidos de forma aleatoria.
+ *  
+ * 
+ * 
+ * @see {@link Contacto}
+ * @author Jon García
+ * 
+ */
+
 public class Profesional extends Contacto {
 
 	private String nombreEmpresa;
@@ -33,14 +46,25 @@ public class Profesional extends Contacto {
 		return SALUDOS[rnd.nextInt(SALUDOS.length)];
 	}
 	
+	/**
+	 * Accesor para el nombre de la empresa
+	 * 
+	 * 
+	 * @return Nombre de la empresa
+	 */
 	public String getNombreEmpresa() {
 		return nombreEmpresa;
 	}
 
+	/**
+	 * Representacion textual de la clase Profesional
+	 * 
+	 * 
+	 * @return String con la representacion textual de la clase
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + "Empresa: " + nombreEmpresa + "\n";
 	}
-	
 	
 }

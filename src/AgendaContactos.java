@@ -7,6 +7,14 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+/**
+ * Un objeto de esta clase, modela una agenda para guardar contactos profesionales y personales, 
+ * permitiendote realizar diversas funciones con ellos.<br><br>
+ * Los contactos se guardan en orden alfabético por primer apellido y no se permiten duplicados.
+ * 
+ * @author Iker Iparraguirre, Jon García, Naiara Borrega
+ * 
+ */
 public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
@@ -15,6 +23,14 @@ public class AgendaContactos {
 		Collections.sort(null);
 	}
 
+	/**
+	 * Añade un nuevo contacto a la lista de contactos.
+	 * Dicho contacto será añadido a la agenda en la letra que le corresponda.<br><br>
+	 * En caso de que la letra no exista, se creará una nueva letra para posteriormente
+	 * insertar el nuevo contacto especificado.
+	 * 
+	 * @param c - Contacto a añadir.
+	 */
 	public void añadirContacto(Contacto c) {
 		char letra = c.getApellidos().charAt(0);
 		if (agenda.containsKey(letra)) {
@@ -37,7 +53,16 @@ public class AgendaContactos {
 		}
 		return contador;
 	}
-
+	
+	/**
+	 * Busca un contacto en la agenda de contactos mediante una serie de
+	 * caractéres especificados.
+	 * 
+	 * 
+	 * @param texto - Texto para buscar
+	 * @return Una lista con todas las coincidencias encontradas en base al texto introducido 
+	 * 		   en parámetros. Si no se encuentra ninguna coincidencia, se devolverá una lista vacia.
+	 */
 	public List<Contacto> buscarContactos(String texto) {
 		List<Contacto> temp = new ArrayList<>();
 		for (Set<Contacto> lista : agenda.values()) {
@@ -121,6 +146,15 @@ public class AgendaContactos {
 		return devuelve;
 	}
 
+	/**
+	 * Representación textual de la agenda.<br>
+	 * Se mostrarán todas las letras ordenadas alfabéticamente que contienen contactos
+	 * en la agenda.
+	 * 
+	 * 
+	 * @return String con la representación textual de la agenda
+	 * 
+	 */
 	@Override
 	public String toString() {
 		String output = "";
