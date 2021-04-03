@@ -75,6 +75,11 @@ public class AgendaContactos {
 		return temp;
 	}
 
+	/**
+	 * Este metodo devuelve un List de todos los Personales que tengan la letra.
+	 * @param La letra para buscar los personales (la clave del TreeMap).
+	 * @return Una collecion List de todos los personales que tengan esa letra, si no hay ninguno, da error de NullPointerException.<br>
+	 */
 	public List<Personal> personalesEnLetra(char letra) {
 		List<Personal> devuelve = new ArrayList<>();
 
@@ -92,6 +97,10 @@ public class AgendaContactos {
 		}
 	}
 
+	/**
+	 * Este metodo devuelve un List de Personal de tods los Personales a los que hay que felicitar.
+	 * @return Una Lista de Personales a los que hay que felicitar.
+	 */
 	public List<Personal> felicitar() {
 		List<Personal> devuelve = new ArrayList<>();
 
@@ -129,6 +138,12 @@ public class AgendaContactos {
 		return contactos;
 	}
 
+	/**
+	 * Dada una letra devuelve un List ordenado por la fecha de nacimiento de todos los Personales que empiecen por esa letra<br>
+	 * 
+	 * @param Un char de la primera letra del apellido del Personal.
+	 * @return Un List de Personales ordenados por la fecha de nacimiento.
+	 */
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
 		List<Personal> devuelve = personalesEnLetra(letra);
 		Collections.sort(devuelve, new Comparator<Personal>() {
