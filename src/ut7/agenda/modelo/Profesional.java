@@ -1,3 +1,4 @@
+package ut7.agenda.modelo;
 import java.util.Random;
 
 /**

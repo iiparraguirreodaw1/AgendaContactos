@@ -1,3 +1,4 @@
+package ut7.agenda.modelo;
 /*
  * La clase Contacto es una clase abstracta que crea un contacto con un nombre, 
  * apellido, telefono y email. <br>
