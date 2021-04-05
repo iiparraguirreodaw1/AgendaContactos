@@ -5,10 +5,10 @@
  * 	@author Naiara Borrega
  */
 public abstract class Contacto implements Comparable<Contacto> {
-	private String nombre;
-	private String apellidos;
-	private String telefono;
-	private String email;
+	protected String nombre;
+	protected String apellidos;
+	protected String telefono;
+	protected String email;
 
 	/*
 	 * El constructor construye la clase Contacto.<br>
@@ -128,7 +128,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 	public boolean equals(Object obj) {
 		if(obj instanceof Contacto) {
 			Contacto c = (Contacto) obj;
-			if(this.nombre.equals(c.getNombre()) && this.apellidos.equals(c.getApellidos()) && this.getEmail().equals(c.getEmail())) {
+			if(this.nombre.equals(c.getNombre()) && this.apellidos.equals(c.getApellidos()) && this.email.equals(c.email)) {
 				return true;
 			}
 		}
