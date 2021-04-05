@@ -99,7 +99,7 @@ public class Personal extends Contacto {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + "Fecha cumpleaños: " + getFechaFormateada() + "\n" + "Relacion: " + getRel() + "\n" + firma();
+		return super.toString() + "Fecha cumpleaños: " + getFechaFormateada() + "\n" + "Relacion: " + getRel() + "\n";
 	}
 
 }
