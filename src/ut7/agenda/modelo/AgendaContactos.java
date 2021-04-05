@@ -21,7 +21,6 @@ public class AgendaContactos {
 
 	public AgendaContactos() {
 		agenda = new TreeMap<>();
-		Collections.sort(null);
 	}
 
 	/**
