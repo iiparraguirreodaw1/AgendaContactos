@@ -81,9 +81,9 @@ public abstract class Contacto implements Comparable<Contacto> {
 	}
 
 	/*
-	 * Este metodo devuelve el email del contacto en String.<br>
+	 * Este metodo devuelve la firma.<br>
 	 * 
-	 * @return String
+	 * @return firma()
 	 */
 	public String getEmail() {
 		return email;
@@ -128,7 +128,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 	public boolean equals(Object obj) {
 		if(obj instanceof Contacto) {
 			Contacto c = (Contacto) obj;
-			if(this.nombre.equals(c.getNombre()) && this.apellidos.equals(c.getApellidos()) && this.email.equals(c.getEmail())) {
+			if(this.nombre.equals(c.getNombre()) && this.apellidos.equals(c.getApellidos()) && this.getEmail().equals(c.getEmail())) {
 				return true;
 			}
 		}

@@ -42,10 +42,21 @@ public class AgendaContactos {
 		}
 	}
 
+	/**
+	 * Este metodo devuelve un Set de los contactos que esten en la letra que le pidas.
+	 * 
+	 * @param letra - Letra en la que se quiere buscar.
+	 * @return Set
+	 */
 	public Set<Contacto> contactosEnLetra(char letra) {
 		return agenda.get(letra);
 	}
 
+	/**
+	 * Este metodo devuelve un int de todos los contactos que hay en la agenda.
+	 * 
+	 * @return int
+	 */
 	public int totalContactos() {
 		int contador = 0;
 		for (Set<Contacto> lista : agenda.values()) {
@@ -118,6 +129,11 @@ public class AgendaContactos {
 		return devuelve;
 	}
 
+	/**
+	 * Este metodo devuelve un Map con los contactos ordenados por relacion.
+	 * 
+	 * @return Map
+	 */
 	public Map<Relacion, List<String>> personalesPorRelacion() {
 		Map<Relacion, List<String>> contactos;
 		contactos = new TreeMap<>();
