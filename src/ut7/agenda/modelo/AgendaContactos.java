@@ -94,6 +94,9 @@ public class AgendaContactos {
 	public List<Personal> personalesEnLetra(char letra) {
 		List<Personal> devuelve = new ArrayList<>();
 
+		if(agenda.get(letra) == null) {
+			return null;
+		}
 		for (Contacto contacto : agenda.get(letra)) {
 			if (contacto instanceof Personal) {
 				Personal p = (Personal) contacto;
@@ -101,11 +104,8 @@ public class AgendaContactos {
 			}
 
 		}
-		if (!devuelve.isEmpty()) {
-			return devuelve;
-		} else {
-			return null;
-		}
+		
+		return devuelve;
 	}
 
 	/**
