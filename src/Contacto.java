@@ -86,7 +86,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 	 * @return firma()
 	 */
 	public String getEmail() {
-		return email;
+		return firma();
 	}
 
 	/*
