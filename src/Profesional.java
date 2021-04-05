@@ -19,6 +19,18 @@ public class Profesional extends Contacto {
 	private Random rnd;
 	private final String[] SALUDOS = {"Atentamente", "Saludos", "Saludos cordiales", "Mis mejores deseos"};
 
+	/**
+	 * 
+	 * Este constructor modela un contacto Profesional, herendando los atributos de contacto y añadiendo
+	 * nombre empresa
+	 * 
+	 * @param nombre
+	 * @param apellidos
+	 * @param telefono
+	 * @param email
+	 * @param nombreEmpresa
+	 * @see {@link Contacto}
+	 */
 	public Profesional(String nombre, String apellidos, String telefono, String email, String nombreEmpresa) {
 		super(nombre, apellidos, telefono, email);
 		this.nombreEmpresa = parsearEmpresa(nombreEmpresa);
@@ -60,7 +72,7 @@ public class Profesional extends Contacto {
 	 * Representacion textual de la clase Profesional
 	 * 
 	 * 
-	 * @return String con la representacion textual de la clase
+	 * @return String con la representación textual de la clase
 	 */
 	@Override
 	public String toString() {
