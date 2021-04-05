@@ -8,16 +8,21 @@ import java.util.Locale;
  * Esta clase tiene una firma de email que es siempre "Un abrazo!!"<br>
  *
  *	@see {@link Contacto}
- *  @author Ikerdaw
+ *  @author Iker Iparraguirre
  *
  */
 public class Personal extends Contacto {
-
+	
 	private LocalDate fecha;
 	private DateTimeFormatter formateador;
 	private Relacion rel;
 	private final String FIRMA = "Un abrazo!!";
 
+	/**
+	 * Recibe como parametros los mismos que la clase Contacto y añade 2 mas, que 
+	 * son un String de fecha y un enum relacion.<br>
+	 * @see {@link Contacto}
+	 */
 	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
 		String[] split = fecha.split("/");
